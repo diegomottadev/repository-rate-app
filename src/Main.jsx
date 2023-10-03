@@ -4,6 +4,7 @@ import RepositoryList from './compnents/RepositoryList'
 import { Navigate, Route, Routes } from 'react-router-native'
 import { Text } from 'react-native'
 import AppBar from './compnents/AppBar'
+import LogIn from './pages/LogIn'
 
 const Main = () => {
     return (
@@ -11,7 +12,7 @@ const Main = () => {
             <AppBar/>
             < Routes>
                     <Route path='/' element={<RepositoryList />} />
-                    <Route path='/signin' element={<Text>Sign In</Text>} />
+                    <Route path='/signin' element={<LogIn />} />
                     <Route path='*' element={<Navigate to='/' />} />
             </ Routes>
         </View>
