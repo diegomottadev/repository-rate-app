@@ -1,10 +1,18 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import {Text, FlatList} from 'react-native'
-import repositories from '../data/repositories.js'
+
 import RepositoryItem from './RepositoryItem.jsx'
+import useRepositories from '../hooks/useRepositories.js'
+
+
+
+
 
 const RepositoryList = () => {
-   return ( <FlatList data={repositories} 
+
+    const {repositories} = useRepositories()
+
+    return ( <FlatList data={repositories} 
             ItemSeparatorComponent={()=><Text> </Text>}
             renderItem={({item: repo }) => (
             <RepositoryItem {...repo} />
