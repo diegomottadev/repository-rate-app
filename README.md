@@ -123,6 +123,18 @@ Most changes are one line in a config array.
 
 **Add a component.** Create `src/components/<Name>/` with `<Name>.jsx`, `styles.js` (a `createStyles = theme => ({...})` function) and `index.js`. Use `useThemedStyles(createStyles)` and declare `propTypes`.
 
+## Things you can build next
+
+If you want to keep playing with the app, here are a few ideas pulled straight from the Full Stack Open exercises:
+
+- [ ] **Real sign in.** The form in `src/pages/LogIn/` validates username and password with Yup. Connect it to the API's `/api/tokens` endpoint, save the auth token with `expo-secure-store`, and swap the Sign in tab for a Sign out button.
+- [ ] **Single repository view.** Tap a repository card to open its own screen with the repo header, an "Open in GitHub" button, and its list of reviews.
+- [ ] **Add a review.** A screen with a form to review any repository (owner name, repo name, rating from 0 to 100, and an optional review text).
+- [ ] **My reviews.** A screen listing all reviews written by the logged-in user, with buttons to open the repo or delete the review.
+- [ ] **Filter and sort.** A search input with a 500ms debounce to filter by repo name, and a picker to sort by latest, highest rated, or lowest rated.
+- [ ] **Infinite scrolling.** The API supports cursor pagination with `first` and `after`. Wire `onEndReached` on the `FlatList` in `src/pages/Repositories/` to fetch more items as you scroll.
+- [ ] **Try it on your phone.** Open Expo Go on an Android or iOS phone, scan the QR code from `npm start`, and check how the layout, keyboard, and safe areas feel in your hands.
+
 ## Tests
 
 ```bash
