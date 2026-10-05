@@ -1,17 +1,5 @@
 const repositories = [
     {
-        id: 'diegomottadev.delivery-burguer-app',
-        fullName: 'diegomottadev/delivery-burguer-app',
-        description:
-            'Build your burger layer by layer with real-time pricing. My first steps in React, following Maximilian Schwarzmüller\'s "React - The Complete Guide".',
-        language: 'JavaScript',
-        forksCount: 0,
-        stargazersCount: 0,
-        ratingAverage: 95,
-        reviewCount: 3,
-        ownerAvatarUrl: 'https://avatars.githubusercontent.com/u/64202326?v=4'
-    },
-    {
         id: 'jaredpalmer.formik',
         fullName: 'jaredpalmer/formik',
         description: 'Build forms in React, without the tears',
