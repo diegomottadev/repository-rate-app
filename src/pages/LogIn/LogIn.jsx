@@ -30,6 +30,12 @@ const LogIn = () => {
                     >
                         Sign in
                     </StyledText>
+                    <View style={styles.infoBox}>
+                        <StyledText color='secondary' fontSize='small' style={styles.infoText}>
+                            Demo mode: you can use any valid email (like demo@example.com) and any
+                            password with 5 or more characters.
+                        </StyledText>
+                    </View>
                     {LOGIN_FIELDS.map(field => (
                         <FormikTextField key={field.name} {...field} />
                     ))}

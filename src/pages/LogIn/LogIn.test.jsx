@@ -4,6 +4,16 @@ import LogIn from './LogIn'
 import { renderWithProviders } from '../../testUtils/renderWithProviders'
 
 describe('LogIn', () => {
+    it('renders demo mode information label', async () => {
+        await renderWithProviders(<LogIn />)
+
+        expect(
+            screen.getByText(
+                'Demo mode: you can use any valid email (like demo@example.com) and any password with 5 or more characters.'
+            )
+        ).toBeOnTheScreen()
+    })
+
     it('does not show errors for fields the user has not touched', async () => {
         const user = userEvent.setup()
         await renderWithProviders(<LogIn />)

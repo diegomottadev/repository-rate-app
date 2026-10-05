@@ -8,7 +8,18 @@ const createStyles = theme => ({
         padding: theme.spacing.lg
     },
     title: {
+        marginBottom: theme.spacing.md
+    },
+    infoBox: {
+        backgroundColor: theme.colors.surface,
+        borderWidth: 1,
+        borderColor: theme.colors.border,
+        borderRadius: theme.radii.md,
+        padding: theme.spacing.md,
         marginBottom: theme.spacing.lg
+    },
+    infoText: {
+        lineHeight: 18
     }
 })
 
