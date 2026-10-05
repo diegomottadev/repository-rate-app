@@ -1,24 +1,33 @@
-import { useEffect } from "react"
-import { useState } from "react"
+import { useCallback, useEffect, useState } from 'react'
+import { getRepositories } from '../api/repositories'
 
 const useRepositories = () => {
-    const [repositories, setRepositories] = useState(null)
+    const [state, setState] = useState({ repositories: [], loading: true, error: null })
+    const [attempt, setAttempt] = useState(0)
 
+    useEffect(() => {
+        const controller = new AbortController()
 
-    const fetchRepositories = async () => {
-        const response = await globalThis.fetch('http://192.168.0.103:5000/api/repositories')
-        const json = await response.json()
-        setRepositories(json)
-    }
+        getRepositories({ signal: controller.signal })
+            .then(repositories => {
+                if (controller.signal.aborted) return
+                setState({ repositories, loading: false, error: null })
+            })
+            .catch(error => {
+                if (controller.signal.aborted) return
+                setState(prev => ({ ...prev, loading: false, error }))
+            })
 
-    useEffect (() => {
-        fetchRepositories()
-    },[])
+        return () => controller.abort()
+    }, [attempt])
 
-    const repositoriesNode = repositories ? repositories.edges.map(edge => edge.node) : []
+    // The first load starts with loading: true, so only a retry needs to set it.
+    const refetch = useCallback(() => {
+        setState(prev => ({ ...prev, loading: true, error: null }))
+        setAttempt(n => n + 1)
+    }, [])
 
-
-    return {repositories: repositoriesNode}
+    return { ...state, refetch }
 }
 
 export default useRepositories

@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="%LANG_ISO_CODE%">
+    <head>
+        <meta charset="utf-8" />
+        <!-- Zoom stays enabled: blocking it fails WCAG 1.4.4. -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+        <meta name="color-scheme" content="light dark" />
+        <title>%WEB_TITLE%</title>
+        <style id="expo-reset">
+            html,
+            body {
+                height: 100%;
+            }
+            /* The FlatList does the scrolling, so the page itself stays still. */
+            body {
+                overflow: hidden;
+            }
+            #root {
+                display: flex;
+                height: 100%;
+                flex: 1;
+            }
+
+            /* Same values as background in src/theme/tokens.js, so there is no
+         white flash before React paints. Keep them in sync. */
+            body {
+                background-color: #f5f7f9;
+            }
+            @media (prefers-color-scheme: dark) {
+                body {
+                    background-color: #0c1014;
+                }
+            }
+
+            /* Only for keyboard focus. Never remove the outline globally. */
+            :focus-visible {
+                outline: 3px solid #207fe8;
+                outline-offset: 2px;
+            }
+            @media (prefers-color-scheme: dark) {
+                :focus-visible {
+                    outline-color: #76b4ff;
+                }
+            }
+
+            @media (prefers-reduced-motion: reduce) {
+                *,
+                *::before,
+                *::after {
+                    animation-duration: 0.01ms !important;
+                    transition-duration: 0.01ms !important;
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+        <noscript>You need to enable JavaScript to run this app.</noscript>
+        <div id="root"></div>
+    </body>
+</html>
